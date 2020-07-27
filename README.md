@@ -232,4 +232,4 @@ There will be certain situations that will break your inference flow. For instan
 
 - if the face is not detected either due to low light or other situations, the app output log info in terminal telling the user: No face detected and skip the frame.
 
-- if more than one face is detected in the frame, it will show a log warning in terminal and tell the user only one face will be used.
+- if more than one face is detected in the frame, it will show a log warning in terminal and tell the user only one face will be used. 
