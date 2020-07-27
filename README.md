@@ -122,7 +122,24 @@ cd <project-repo-path>
 C:\Program Files (x86)\IntelSWTools\openvino\bin\
 setupvars.bat
 ```
-**3. Run the main.py file**
+**3. Create Virtual Enviorment in working directory.
+```
+        cd Computer-Pointer-Controller
+        python3 -m venv venv
+```
+**4. Activate Virtual Enviorment
+   ```     
+        source venv/bin/activate
+  ```
+**5. Load the OpenVino Variables from installed directory of OpenVino
+    ```
+        source {INSTALLED_OPENVINO_DIR}/bin/setupvars.sh 
+    ```        
+**6. Just execute <i>runme.sh</i> from working directory to install prerequisites and you are good to go !!
+     ```
+        pip install -r requirements.txt
+      ```
+**7. Run the main.py file**
 ```
 python src/main.py -i bin/demo.mp4 -fd intel/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -hp intel/head-pose-estimation-adas-0001/FP32/head-pose-estimation-adas-0001.xml -fl intel/landmarks-regression-retail-0009/FP32/landmarks-regression-retail-0009.xml -ge intel/gaze-estimation-adas-0002/FP32/gaze-estimation-adas-0002.xml
  
