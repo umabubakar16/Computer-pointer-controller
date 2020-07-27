@@ -122,20 +122,20 @@ cd <project-repo-path>
 C:\Program Files (x86)\IntelSWTools\openvino\bin\
 setupvars.bat
 ```
-**3. Create Virtual Enviorment in working directory.
+**3. Create Virtual Enviorment in working directory.**
 ```
         cd Computer-Pointer-Controller
         python3 -m venv venv
 ```
-**4. Activate Virtual Enviorment
+**4. Activate Virtual Enviorment**
    ```     
         source venv/bin/activate
   ```
-**5. Load the OpenVino Variables from installed directory of OpenVino
+**5. Load the OpenVino Variables from installed directory of OpenVino**
     ```
         source {INSTALLED_OPENVINO_DIR}/bin/setupvars.sh 
     ```        
-**6. Just execute <i>runme.sh</i> from working directory to install prerequisites and you are good to go !!
+**6. Run the following command to install prerequisites **
      ```
         pip install -r requirements.txt
       ```
