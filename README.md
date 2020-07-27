@@ -200,7 +200,7 @@ before you run this app You must configure the environment to use the Intel® Di
     source /opt/intel/openvino/bin/setupvars.sh -pyver 3.7
 
 
-### Running Demo
+### Running Demob
 This is how to run a basic demo this project.
 
 automatically:
