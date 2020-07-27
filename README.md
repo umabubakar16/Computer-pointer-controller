@@ -10,12 +10,74 @@ Computer Pointer Controller application is used to controll the movement of mous
     ![pipeline-diagram](./images/pipeline.png)
 
 ### Project structure
-```    .
-    ├── src                     # contains all the core components face, gaze, headpose, landmarks, input_feeder, helper and mouse_controller
-    ├── images                  # supported images for README.adoc
-    ├── bin                     # Demo video's
-    ├── intel                   # contains all the models for the project
-    └── README.md               # Contains project write and/or documentation
+```    
+|   README.md
+|   requirements.txt
+|
++---bin
+|       demo.mp4
+|
++---images
+|       pipeline.png
+|
++---intel
+|   |   Computer pointer controller.rar
+|   |   Computer-pointer-controller-master.zip
+|   |
+|   +---face-detection-adas-binary-0001
+|   |   \---FP32-INT1
+|   |           face-detection-adas-binary-0001.bin
+|   |           face-detection-adas-binary-0001.xml
+|   |
+|   +---gaze-estimation-adas-0002
+|   |   +---FP16
+|   |   |       gaze-estimation-adas-0002.bin
+|   |   |       gaze-estimation-adas-0002.xml
+|   |   |
+|   |   +---FP32
+|   |   |       gaze-estimation-adas-0002.bin
+|   |   |       gaze-estimation-adas-0002.xml
+|   |   |
+|   |   \---FP32-INT8
+|   |           gaze-estimation-adas-0002.bin
+|   |           gaze-estimation-adas-0002.xml
+|   |
+|   +---head-pose-estimation-adas-0001
+|   |   +---FP16
+|   |   |       head-pose-estimation-adas-0001.bin
+|   |   |       head-pose-estimation-adas-0001.xml
+|   |   |
+|   |   +---FP32
+|   |   |       head-pose-estimation-adas-0001.bin
+|   |   |       head-pose-estimation-adas-0001.xml
+|   |   |
+|   |   \---FP32-INT8
+|   |           head-pose-estimation-adas-0001.bin
+|   |           head-pose-estimation-adas-0001.xml
+|   |
+|   \---landmarks-regression-retail-0009
+|       +---FP16
+|       |       landmarks-regression-retail-0009.bin
+|       |       landmarks-regression-retail-0009.xml
+|       |
+|       +---FP32
+|       |       landmarks-regression-retail-0009.bin
+|       |       landmarks-regression-retail-0009.xml
+|       |
+|       \---FP32-INT8
+|               landmarks-regression-retail-0009.bin
+|               landmarks-regression-retail-0009.xml
+|
+\---src
+        face_detection.py
+        facial_landmarks_detection.py
+        gaze_estimation.py
+        head_pose_estimation.py
+        helper.py
+        input_feeder.py
+        main.py
+        mouse_controller.py
+
  ```  
 
 #### Models
