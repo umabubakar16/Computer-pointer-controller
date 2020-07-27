@@ -135,7 +135,7 @@ setupvars.bat
     ```
         source {INSTALLED_OPENVINO_DIR}/bin/setupvars.sh 
     ```        
-**6. Run the following command to install prerequisites ** <br>
+**6. Run the following command to install prerequisites** <br>
      ```
         pip install -r requirements.txt
       ```
