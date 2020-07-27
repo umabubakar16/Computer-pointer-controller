@@ -105,8 +105,8 @@ install the following dependencies to run the project for windows 10
 1. [Install the Intel® Distribution of OpenVINO™ toolkit core components](https://docs.openvinotoolkit.org/2020.3/_docs_install_guides_installing_openvino_windows.html#Install-Core-Components)
 2. Install the dependencies:
  **[Microsoft Visual Studio* with C++ 2019 with MSBuild](http://visualstudio.microsoft.com/downloads/) <br>
- **[CMake 3.14. 64-bit](https://cmake.org/download/) <br>
- **[Python 3.6.5 64-bit](https://www.python.org/downloads/release/python-365/)
+ **[CMake 3.14. 64-bit](https://cmake.org/download/)** <br>
+ **[Python 3.6.5 64-bit](https://www.python.org/downloads/release/python-365/)**
 
 ## Demo
 ### Running the project
