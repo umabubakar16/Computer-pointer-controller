@@ -1,18 +1,99 @@
 # Computer Pointer Controller
 
+## Project Set Up and Installation
+
+### Setup
+
+#### Prerequisites.
+this project is run on windows 10  see guide below <br>
+   (https://docs.openvinotoolkit.org/2020.3/_docs_install_guides_installing_openvino_windows.html) for installing openvino.
+See 
+#### Step 1
+Clone the repository:- https://github.com/umabubakar16/Computer-pointer-controller
+
+#### Step 2
+Initialize the openVINO environment:-
+```
+source /opt/intel/openvino/bin/setupvars.sh -pyver 3.5
+```
+
+#### Step 3
+
+Download the following models by using openVINO model downloader:-
+
+**1. Face Detection Model**
+```
+python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "face-detection-adas-binary-0001"
+```
+**2. Facial Landmarks Detection Model**
+```
+python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "landmarks-regression-retail-0009"
+```
+**3. Head Pose Estimation Model**
+```
+python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "head-pose-estimation-adas-0001"
+```
+**4. Gaze Estimation Model**
+```
+python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "gaze-estimation-adas-0002"
+```
+=== Command Line Options
+
+   1. -fd FACE_DETECTION_MODEL, --face_detection_model FACE_DETECTION_MODEL
+                            specify the Path to Face Detection model xml file
+    2. -fl FACIAL_LANDMARK_MODEL, --facial_landmark_model FACIAL_LANDMARK_MODEL
+                            specify the Path to Facial Landmarks Detection model
+                            xml file
+    3. -hp HEAD_POSE_MODEL, --head_pose_model HEAD_POSE_MODEL
+                            specify the Path to Head Pose Estimation model xml
+                            file
+    4. -ge GAZE_ESTIMATION_MODEL, --gaze_estimation_model GAZE_ESTIMATION_MODEL
+                            specify the Path to Gaze Estimation model xml file
+    5. -i INPUT, --input INPUT, specify input, use media file or type cam to use your
+                            webcam
+
+### optional arguments:
+
+    1. -h, --help            show this help message and exit
+    2. -d DEVICE, --device DEVICE
+                            specify the target device to run inference on: CPU,
+                            GPU, FPGA or MYRIAD (for NCS2)
+    3. -pt PROB_THRESHOLD, --prob_threshold PROB_THRESHOLD
+                            specify probability threshold for model to detect the
+                            face accurately from the frame
+    4. -x EXTENSION, --extension EXTENSION
+                            specify path to CPU extension file, if applicable, for
+                            OpenVINO version < 2020
+    5. -sh SHOW_OUTPUT, --show_output SHOW_OUTPUT
+                            specify whether to Show Visualization of output
+                            results for a model e.g: 'fd fl ge' or use 'all'
+               
+
+
+## Running the project
+
+Open a new terminal and run the following commands:-
+
+**1. CD into the directory of the project repository**
+```
+cd <project-repo-path>
+```
+**3. Initialize OpenVino environment from your local machine**
+```
+C:\Program Files (x86)\IntelSWTools\openvino\bin\
+setupvars.bat
+```
+**3. Run the main.py file**
+```
+python src/main.py -i bin/demo.mp4 -fd intel/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -hp intel/head-pose-estimation-adas-0001/FP32/head-pose-estimation-adas-0001.xml -fl intel/landmarks-regression-retail-0009/FP32/landmarks-regression-retail-0009.xml -ge intel/gaze-estimation-adas-0002/FP32/gaze-estimation-adas-0002.xml
+ 
+```
+
 | Details               |                 |
 |-----------------------|-----------------|
-| Programming Language  |  Python 3.7     |
+| Programming Language  |  Python 3.6.5  |
 | Operating System      |  Ubuntu 18.04   |
 
-![pointer-controller](./images/demo.gif)
-
-## Introduction
-CPC Project is A.I application to control the computer mouse pointer movement using eye's gaze, the project use Inference Engine API from Intel's OpenVINO ToolKit with python implementation. The four different pretrained models will run in the same machine; the gaze estimation model will use the results from the previous models to find the new mouse coordinates, the app then change the mouse pointer position accordingly.
-
-## How it Works
-
-The app will use a media file or webcam as input and capture frames, each frame is sent to face detection model, after some preprocessing it returns the cropped face, the cropped face is then sent to the head post estimation and facial landmarks detection models for further processing, the cropped eyes (left and right eyes) are returned by facial landmarks detection model while head pose estimation model returns head pose angles, these results are passed to the gaze estimation model where the returned coordinates will be used as new values for pointer and hence move the mouse position according to result.
 
 ### Pipeline
 
@@ -33,10 +114,17 @@ The app will use a media file or webcam as input and capture frames, each frame 
 * Python3.7 with PIP
 * you can use anaconda
 
-## Project Directory Structure
-* 
-    ![directory-structure](./images/dir-structure.png)
-
+== Project structure
+    .
+    ├── core                    # This has all the core components face, gaze, headpos, landmarks and mouse_controller
+    ├── images                  # supported images for README.adoc
+    ├── resource                # Demo video's
+    ├── scripts                 # Auto script to download pre-trained models
+    ├── utils                   # Helper files
+    ├── main.py                 # Main function driver file
+    ├── LICENSE
+    └── README.md
+    
 | Name |  Description               |
 |------|-----------------|
 |.     | the root folder which contains folders, log files, scripts and source code files|
@@ -111,44 +199,6 @@ before you run this app You must configure the environment to use the Intel® Di
 
     source /opt/intel/openvino/bin/setupvars.sh -pyver 3.7
 
-### usage 
-
-    python3.7 main.py [-h] -fd FACE_DETECTION_MODEL -fl FACIAL_LANDMARK_MODEL -hp
-            HEAD_POSE_MODEL -ge GAZE_ESTIMATION_MODEL -i INPUT [-d DEVICE]
-            [-pt PROB_THRESHOLD] [-x EXTENSION] [-sh SHOW_OUTPUT]
-
-
-### required arguments:
-
-    -fd FACE_DETECTION_MODEL, --face_detection_model FACE_DETECTION_MODEL
-                            specify the Path to Face Detection model xml file
-    -fl FACIAL_LANDMARK_MODEL, --facial_landmark_model FACIAL_LANDMARK_MODEL
-                            specify the Path to Facial Landmarks Detection model
-                            xml file
-    -hp HEAD_POSE_MODEL, --head_pose_model HEAD_POSE_MODEL
-                            specify the Path to Head Pose Estimation model xml
-                            file
-    -ge GAZE_ESTIMATION_MODEL, --gaze_estimation_model GAZE_ESTIMATION_MODEL
-                            specify the Path to Gaze Estimation model xml file
-    -i INPUT, --input INPUT
-                            specify input, use media file or type cam to use your
-                            webcam
-
-### optional arguments:
-
-    -d DEVICE, --device DEVICE
-                            specify the target device to run inference on: CPU,
-                            GPU, FPGA or MYRIAD (for NCS2)
-    -pt PROB_THRESHOLD, --prob_threshold PROB_THRESHOLD
-                            specify probability threshold for model to detect the
-                            face accurately from the frame
-    -x EXTENSION, --extension EXTENSION
-                            specify path to CPU extension file, if applicable, for
-                            OpenVINO version < 2020
-    -sh SHOW_OUTPUT, --show_output SHOW_OUTPUT
-                            specify whether to Show Visualization of output
-                            results for a model e.g: 'fd fl ge' or use 'all'
-               
 
 ### Running Demo
 This is how to run a basic demo this project.
