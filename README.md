@@ -138,45 +138,19 @@ I have run the model in 2 diffrent hardware:-
 1. Intel Celeron N2840 CPU 
 2. Intel Celeron N2840 GPU
 
-I also compared their performances by inference time, frame per second and model loading time.
+GPU proccesed more frames per second compared to any other hardware using FP16 because the GPU has severals Execution units with instruction sets of 16bit floating point data types.
 
-
-- Here we run our application using different precision of models, inference time in low precision models is faster. the model with high precision say FP32 will require more compution than FP16 and INT8 models, loading time is one time event and low value means it tooks less time to load a models, the fps and inference time of the low precision models are better, however, there are some trade-offs with accuracy when using lower precision, FP32 have a higher accuracy than others e.g: FP16. FP32 for example can be quantized into INT8 this will allow us to get faster inference but  with some drops in accuracy.
-
-- the best precision combination is "FP32-INT1 FP16 FP16 FP16". FP32-INT1 will be used for face detection model while FP16 will be used for other models. by doing this we will maintain our system resources while having a good accuracy that is enough.
+From the result in the inference time, frame per second and model loading time of the benchmark, the best precision combination is "FP32-INT1 FP16 FP16 FP16". FP32-INT1 will be used for face detection model while FP16 will be used for other models. by doing this we will maintain our system resources while having a good accuracy that is enough.
 
 
 ## Stand Out Suggestions
 
-- User can shut off the output video by pressing q key. This will close the cv2 opened window and show a log info like this:
-
-```
-INFO:root:changing mouse position... moving
-INFO:root:video window closed... to exit app, press CTRL+Z
-INFO:root:changing mouse position... moving
-INFO:root:changing mouse position... moving
-```
-
-- This app can handle image, video and webcam (i have added a code to preprocess the webcam since it is backwards/inverted)
-
-
-### Async Inference
-If you have used Async Inference in your code, benchmark the results and explain its effects on power and performance of your project.
 
 ### Edge Cases
 There will be certain situations that will break your inference flow. For instance, lighting changes or multiple people in the frame. Explain some of the edge cases you encountered in your project and how you solved them to make your project more robust.
 
-- The app used 60% as default probability threshold to ensure best result during face detection
+- If the model can not detect a face it prints unable to detect a face and skip to another frame untill  a face is detected
 
-- if the face is not detected either due to low light or other situations, the app output log info in terminal telling the user: No face detected. The app then skip the frame without feeding data to other models.
+- if the face is not detected either due to low light or other situations, the app output log info in terminal telling the user: No face detected and skip the frame.
 
-- user can also specify the probability threshold based on their need.
-
-- when the app detects more than one face in frame, it will show a log warning in terminal and tell the user only one face will be used.
-
-- If errors occur in other models after face detection results, the app shows info to the user, the frame is skipped and the mouse position remains unchanged.
-
-
-## Conclusion
-
-In this project, we used the gaze detection model to control the mouse pointer of computer. The Gaze Estimation model was used to estimate the gaze of the user's eyes and change the mouse pointer position accordingly. This project also demonstrate the ability to run multiple models in the same machine and coordinate the flow of data between those models.
+- if more than one face is detected in the frame, it will show a log warning in terminal and tell the user only one face will be used.
