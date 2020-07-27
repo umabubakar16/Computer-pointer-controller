@@ -140,7 +140,7 @@ I have run the model in 2 diffrent hardware:-
 
 GPU proccesed more frames per second compared to any other hardware using FP16 because the GPU has severals Execution units with instruction sets of 16bit floating point data types.
 
-From the result in the inference time, frame per second and model loading time of the benchmark, the best precision combination is "FP32-INT1 FP16 FP16 FP16". FP32-INT1 will be used for face detection model while FP16 will be used for other models. by doing this we will maintain our system resources while having a good accuracy that is enough.
+From result in the inference time, frame per second and model loading time of the benchmark, the best precision combination is "FP32-INT1 FP16 FP16 FP16". FP32-INT1 will be used for face detection model while FP16 will be used for other models. by doing this we will maintain our system resources while having a good accuracy that is enough.
 
 
 ## Stand Out Suggestions
