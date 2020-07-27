@@ -55,7 +55,7 @@ Open a new terminal and run the following commands:-
 ```
 cd <project-repo-path>
 ```
-**3. Initialize OpenVino environment from your local machine
+**2. Initialize OpenVino environment from your local machine
 ```
 C:\Program Files (x86)\IntelSWTools\openvino\bin\
 setupvars.bat
@@ -68,7 +68,7 @@ python src/main.py -i bin/demo.mp4 -fd intel/face-detection-adas-binary-0001/FP3
 ## Documentation
 ### Command Line Options
 ```
-   1. -fd FACE_DETECTION_MODEL, --face_detection_model FACE_DETECTION_MODEL
+    1. -fd FACE_DETECTION_MODEL, --face_detection_model FACE_DETECTION_MODEL
                             specify the Path to Face Detection model xml file
     2. -fl FACIAL_LANDMARK_MODEL, --facial_landmark_model FACIAL_LANDMARK_MODEL
                             specify the Path to Facial Landmarks Detection model
