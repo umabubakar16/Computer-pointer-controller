@@ -131,15 +131,15 @@ setupvars.bat
    ```     
         source venv/bin/activate
   ```
-**5. Load the OpenVino Variables from installed directory of OpenVino**
+**5. Load the OpenVino Variables from installed directory of OpenVino** <br>
     ```
         source {INSTALLED_OPENVINO_DIR}/bin/setupvars.sh 
     ```        
-**6. Run the following command to install prerequisites **
+**6. Run the following command to install prerequisites ** <br>
      ```
         pip install -r requirements.txt
       ```
-**7. Run the main.py file**
+**7. Run the main.py file** <br>
 ```
 python src/main.py -i bin/demo.mp4 -fd intel/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -hp intel/head-pose-estimation-adas-0001/FP32/head-pose-estimation-adas-0001.xml -fl intel/landmarks-regression-retail-0009/FP32/landmarks-regression-retail-0009.xml -ge intel/gaze-estimation-adas-0002/FP32/gaze-estimation-adas-0002.xml
  
