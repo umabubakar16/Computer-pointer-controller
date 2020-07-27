@@ -55,7 +55,7 @@ Open a new terminal and run the following commands:-
 ```
 cd <project-repo-path>
 ```
-**2. Initialize OpenVino environment from your local machine
+**2. Initialize OpenVino environment from your local machine**
 ```
 C:\Program Files (x86)\IntelSWTools\openvino\bin\
 setupvars.bat
