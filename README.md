@@ -79,7 +79,34 @@ Computer Pointer Controller application is used to controll the movement of mous
         mouse_controller.py
 
  ```  
-
+ 
+ #### IMDB Movie review dataset
+ ```
+   
+\---aclImdb
+    |   imdb.vocab
+    |   imdbEr.txt
+    |   README
+    |   tree.txt
+    |   
+    +---test
+    |   |   labeledBow.feat
+    |   |   urls_neg.txt
+    |   |   urls_pos.txt
+    |   |   
+    |   +---neg
+    |   \---pos
+    \---train
+        |   labeledBow.feat
+        |   unsupBow.feat
+        |   urls_neg.txt
+        |   urls_pos.txt
+        |   urls_unsup.txt
+        |   
+        +---neg
+        +---pos
+        \---unsup
+```
 #### Models
 
 Download the following models and place them into intel folder using openVINO model downloader:-
